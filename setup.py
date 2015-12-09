@@ -1,23 +1,10 @@
 #!/bin/env python2.7
-from commands import getstatusoutput
 
 from setuptools import setup, find_packages
 
-(status, output) = getstatusoutput('hg sum')
-
-VERSION = output.split('\n')[0].split()[-1]
-
-if VERSION == "tip":
-    VERSION = getstatusoutput('hg branch')[1]
-    if VERSION == 'default':
-        t = getstatusoutput('hg sum')
-        t = t[1].split('\n')[0].split()[1].split(':')[1]
-        VERSION = 'default: %s' % t
-
-VERSION = output.split('\n')[0].split()[-1]
 setup(
     name="otto",
-    version=VERSION,
+    version="1.4.5",
     url='http://hg/qa/otto/',
     description="oTTo an Automation Library",
     author='Coraid QA Alumni',

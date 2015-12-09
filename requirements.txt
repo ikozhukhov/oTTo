@@ -1,0 +1,8 @@
+setuptools
+requests
+simplejson
+pyyaml
+httplib2
+docopt
+jsonrpclib
+paramiko>=1.15.1

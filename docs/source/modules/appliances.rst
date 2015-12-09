@@ -18,7 +18,6 @@ and well organized.
 
 srx
 ---
-
 .. autoclass:: otto.appliances.srx.Srx
     :members:
     :undoc-members:

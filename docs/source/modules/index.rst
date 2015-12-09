@@ -2,15 +2,13 @@ Modules
 =======
 
 .. toctree::
-        :maxdepth: 4
+   :maxdepth: 2
 
-        appliances.rst
-        initiators.rst
-        lib.rst
-        utils.rst
+   appliances.rst
+   initiators.rst
+   lib.rst
+   utils.rst
+   connections.rst
+   data.rst
 
-        connections.rst
-        data.rst
-
-.. todolist::
 

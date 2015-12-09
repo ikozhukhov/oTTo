@@ -455,3 +455,40 @@ class parallelCmd(object):
         else:
             logger.debug("waited for {:10.4f} sec".format(time() - then))
         return self.result
+
+
+class TunnelSocketCreator(paramiko.SSHClient):
+    """
+    a class for opening sockets remotely with ssh
+    """
+    def __init__(self, host, user, port=22, key_filename=None, compress=True):
+        self.host = host
+        self.user = user
+        self.port = port
+        super(TunnelSocketCreator, self).__init__()
+        self.key_filename = key_filename
+        self.compression = compress
+        self.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+    def connect(self, timeout=10):
+        """
+        connect to proxy host
+        :param timeout:
+        :return:
+        """
+        return super(TunnelSocketCreator, self).connect(hostname=self.host,
+                                                        port=self.port,
+                                                        username=self.user,
+                                                        timeout=timeout,
+                                                        key_filename=self.key_filename,
+                                                        compress=self.compression)
+
+    def get_sock(self, rhost, rport):
+        """
+
+        :param rhost:
+        :param rport:
+        :return: a socket like object connected to rhost:rport
+        """
+        transport = self.get_transport()
+        return transport.open_channel('direct-tcpip', (rhost, rport),  ('127.0.0.1', 0))

@@ -8,9 +8,7 @@ automation libraries
 Contents:
 
 .. toctree::
-        :maxdepth: 4
+   :maxdepth: 2
 
-        modules/index.rst
-        modules/hba_namespace.rst
-
-
+   modules/index.rst
+   modules/hba_namespace.rst

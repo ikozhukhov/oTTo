@@ -2,12 +2,12 @@
 
 import sys
 import os
+from datetime import datetime
 
 
 # General information about the project.
 project = u'oTTo'
-copyright = u'2010 - 2015 , CORAID'
-release = 'public'
+copyright = u'2010 - %s, CORAID Alumni' % datetime.now().year
 
 sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))
 sys.path.insert(1, "%s/src" % os.path.abspath(
@@ -51,7 +51,7 @@ html_logo = 'otto.png'
 html_favicon = 'otto.ico'
 
 # If true, links to the reST sources are added to the pages.
-html_show_sourcelink = False
+html_show_sourcelink = True
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ottodoc'
@@ -60,7 +60,7 @@ htmlhelp_basename = 'ottodoc'
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
     ('index', 'otto.tex', u'otto Documentation',
-     u'michaelian ennis', 'manual'),
+     u'michaelian ennis, et al.', 'manual'),
 ]
 
 # -- Options for manual page output --------------------------------------------

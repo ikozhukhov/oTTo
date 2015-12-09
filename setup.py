@@ -32,8 +32,5 @@ setup(
                       'jsonrpclib',
                       'paramiko>=1.15.1'],
     tests_require=['nose', 'mock'],
-    scripts=['src/engine/executor.py',
-             'src/engine/mk_jobfile.py',
-             'src/engine/mk_test.py'],
     zip_safe=False
 )

@@ -402,17 +402,17 @@ A histogram by io size of various statistics for the aoe target. The array does 
 
 /aoe/shelf.slot/stats
 =====================
-Statistics for a particular aoe target:
+Statistics for a particular aoe target::
 
-object {
-	integer sent;
-	integer resent;
-	integer unex;
-}*;
+    object {
+        integer sent;
+        integer resent;
+        integer unex;
+    }*;
 
 /aoe/shelf.slot/state
 =====================
-State information for an aoe target { configstring, identinfo, mac:interfacemap, congavoid }:
+State information for an aoe target { configstring, identinfo, mac:interfacemap, congavoid }::
 
     object {
         boolean active;	// only active aoe targets are visible to the user, i.e. flushed targets have active=false
@@ -558,7 +558,7 @@ State information for this scsi lun { serial, naa, vendor, product, size, CTLadd
 
 /scsi/id/stats
 ==============
-Statistics for the scsi lun { commands sent, received, errored }:
+Statistics for the scsi lun { commands sent, received, errored }::
 
      object {
         integer commands;		//Total commands sent
@@ -581,7 +581,8 @@ Statistics for the scsi lun { commands sent, received, errored }:
             integer 0x72700?;	//DATA PROTECT, WRITE PROTECTED – used when an ATA write fails and the ATA write protect bit is set
             integer 0xother?;	//All other sense codes
         ] sensecnts;
-    }* scsistats;
+     }* scsistats;
+
 
 Access
 ------
@@ -589,9 +590,9 @@ via EL
 ======
 Get the HBA EL address and port::
 
-[root@hostname ~]# grep Listen /proc/ethdrv/elstats
-Listen [0] 5100001004010d8e!17007 0000000000000000!0 id0 2093 rid0 0 next 2093 rcvd 0 unack 2094 delayedack 0 flags 0 resends 0 rxidle 2163411651 txidle 2163411651 crto 90 rto 90 sa 50 sv 10 rttseq 0 opens 0 rqlen 0 outqlen 0 deathtime 30000
-[root@hostname ~]#
+    [root@hostname ~]# grep Listen /proc/ethdrv/elstats
+    Listen [0] 5100001004010d8e!17007 0000000000000000!0 id0 2093 rid0 0 next 2093 rcvd 0 unack 2094 delayedack 0 flags 0 resends 0 rxidle 2163411651 txidle 2163411651 crto 90 rto 90 sa 50 sv 10 rttseq 0 opens 0 rqlen 0 outqlen 0 deathtime 30000
+    [root@hostname ~]#
 
 Mount from Plan 9:
 ==================
@@ -601,10 +602,12 @@ Assuming you have drawterm and a Plan 9 account that has connectivity to the ini
     echo 'bind /net/ether4' >> /net/el/ctl
 
 Change 4 to the appropriate port if different – also following the # is a lower case L not a pipe. Then establish the connection to the namespace over the EL link::
+
     srv -n el!5100001004010d8e!17007 hostname
     mount /srv/hostname /n/hostname
 
 Then you can cd into /n/<hostname/mountpoint> and view/traverse the namespace for that initiator. When done be sure to unmount it::
+
     unmount /n/hostname; rm /srv/hostname
 
 Mount from CorOS
